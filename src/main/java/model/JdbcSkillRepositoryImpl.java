@@ -32,26 +32,32 @@ public class JdbcSkillRepositoryImpl implements SkillRepository {
     }
 
     @Override
-    public void remove(Long id) {
+    public int remove(Long id) {
+        int removedAmount = 0;
+
         try (PreparedStatement ps = connection.prepareStatement(REMOVE_SKILL_QUERY)) {
             ps.setLong(1, id);
-            ps.executeUpdate();
+            removedAmount = ps.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+
+        return removedAmount;
     }
 
     @Override
-    public boolean update(Skill skill) {
+    public int update(Skill skill) {
+        int updatedAmount = 0;
+
         try (PreparedStatement ps = connection.prepareStatement(UPDATE_SKILL_QUERY)) {
             ps.setString(1, skill.getName());
             ps.setLong(2, skill.getId());
-            ps.executeUpdate();
+            updatedAmount = ps.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        return true;
+        return updatedAmount;
     }
 
     @Override

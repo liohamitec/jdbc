@@ -5,9 +5,9 @@ import java.util.Collection;
 public interface GenericRepository<T,ID> {
     void add(T t);
 
-    void remove(ID id);
+    int remove(ID id);
 
-    boolean update(T t);
+    int update(T t);
 
     T getById(ID id);
 

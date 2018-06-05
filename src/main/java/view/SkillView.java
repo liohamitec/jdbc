@@ -7,8 +7,8 @@ import java.sql.Connection;
 import java.util.Scanner;
 
 public class SkillView {
-    Scanner scanner;
-    SkillService skillService;
+    private Scanner scanner;
+    private SkillService skillService;
 
     public SkillView(int action, Connection conn, Scanner sc) {
         scanner = sc;
@@ -28,13 +28,15 @@ public class SkillView {
         String skillName = scanner.nextLine();
 
         skillService.insert(new Skill(skillName));
+        System.out.println("Скил добавлен!");
     }
 
     private void deleteAction() {
         System.out.println("Введите id скила для удаления: ");
         Long skillId = scanner.nextLong();
 
-        skillService.delete(skillId);
+        int amount = skillService.delete(skillId);
+        System.out.println(amount + " записей удалено!");
     }
 
     private void updateAction() {
@@ -43,14 +45,16 @@ public class SkillView {
         System.out.println("Введите название скила: ");
         String skillName = scanner.nextLine();
 
-        skillService.update(new Skill(skillId,skillName));
+        int amount = skillService.update(new Skill(skillId,skillName));
+        System.out.println(amount + " записей обновлено!");
     }
 
     private void selectByIdAction() {
         System.out.println("Введите id скила для показа: ");
         Long skillId = scanner.nextLong();
 
-        skillService.getById(skillId);
+        Skill sk = skillService.getById(skillId);
+        System.out.println(sk);
     }
 
     private void selectAllAction() {

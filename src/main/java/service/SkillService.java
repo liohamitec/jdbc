@@ -6,6 +6,7 @@ import repository.SkillRepository;
 import util.ConnectionUtil;
 
 import java.sql.Connection;
+import java.util.Collection;
 
 public class SkillService {
     SkillRepository skillRepImpl;
@@ -20,19 +21,19 @@ public class SkillService {
         skillRepImpl.add(skill);
     }
 
-    public void delete(Long id) {
-        skillRepImpl.remove(id);
+    public int delete(Long id) {
+        return skillRepImpl.remove(id);
     }
 
-    public void update(Skill newSkill) {
-        skillRepImpl.update(newSkill);
+    public int update(Skill newSkill) {
+        return skillRepImpl.update(newSkill);
     }
 
-    public void getById(Long id) {
-        skillRepImpl.getById(id);
+    public Skill getById(Long id) {
+        return skillRepImpl.getById(id);
     }
 
-    public void getAll() {
-        skillRepImpl.getAll();
+    public Collection<Skill> getAll() {
+        return skillRepImpl.getAll();
     }
 }
