@@ -54,7 +54,7 @@ public class SkillView {
         Long skillId = scanner.nextLong();
 
         Skill sk = skillService.getById(skillId);
-        System.out.println(sk);
+        System.out.println(sk.getName());
     }
 
     private void selectAllAction() {
