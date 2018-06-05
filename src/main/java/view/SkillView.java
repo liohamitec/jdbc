@@ -11,10 +11,13 @@ public class SkillView {
     private Scanner scanner;
     private SkillService skillService;
 
-    public SkillView(int action, Connection conn, Scanner sc) {
+    public SkillView(Connection conn, Scanner sc) {
+
         scanner = sc;
         skillService = new SkillService(conn);
+    }
 
+    public void executeAction(int action) {
         switch (action) {
             case 1: insertAction(); break;
             case 2: deleteAction(); break;
@@ -26,10 +29,14 @@ public class SkillView {
 
     private void insertAction() {
         System.out.println("Введите название скила для добавления: ");
+        scanner.nextLine();
         String skillName = scanner.nextLine();
 
-        skillService.insert(new Skill(skillName));
-        System.out.println("Скил добавлен!");
+        int amount = skillService.insert(new Skill(skillName));
+        if (amount > 0)
+            System.out.println("Скил добавлен!");
+        else
+            System.out.println("Возникла ошибка при добавлении скила...");
     }
 
     private void deleteAction() {
@@ -43,11 +50,17 @@ public class SkillView {
     private void updateAction() {
         System.out.println("Введите id скила для обновления: ");
         Long skillId = scanner.nextLong();
+
+        scanner.nextLine();
+
         System.out.println("Введите название скила: ");
         String skillName = scanner.nextLine();
 
         int amount = skillService.update(new Skill(skillId,skillName));
-        System.out.println(amount + " записей обновлено!");
+        if (amount == 0)
+            System.out.println("Запись с таким id не найдена!");
+        else
+            System.out.println(amount + " записей обновлено!");
     }
 
     private void selectByIdAction() {
@@ -55,11 +68,17 @@ public class SkillView {
         Long skillId = scanner.nextLong();
 
         Skill sk = skillService.getById(skillId);
-        System.out.println(sk.getName());
+        if (sk != null && sk.getName() != null)
+            System.out.println(sk.getName());
+        else
+            System.out.println("Елемент с данным id в таблице отсутствует.");
     }
 
     private void selectAllAction() {
         Collection<Skill> skillCollection = skillService.getAll();
+
+        System.out.println(skillCollection.size());
+
         skillCollection.forEach(System.out::println);
     }
 }

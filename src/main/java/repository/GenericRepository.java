@@ -3,7 +3,7 @@ package repository;
 import java.util.Collection;
 
 public interface GenericRepository<T,ID> {
-    void add(T t);
+    int add(T t);
 
     int remove(ID id);
 

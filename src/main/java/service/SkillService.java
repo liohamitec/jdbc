@@ -10,14 +10,12 @@ import java.util.Collection;
 public class SkillService {
     SkillRepository skillRepImpl;
 
-    //public SkillService(int action, Skill skill)
-
     public SkillService(Connection conn) {
         skillRepImpl = new JdbcSkillRepositoryImpl(conn);
     }
 
-    public void insert(Skill skill) {
-        skillRepImpl.add(skill);
+    public int insert(Skill skill) {
+        return skillRepImpl.add(skill);
     }
 
     public int delete(Long id) {

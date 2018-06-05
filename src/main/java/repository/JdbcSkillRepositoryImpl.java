@@ -12,9 +12,10 @@ import java.util.Collection;
 
 public class JdbcSkillRepositoryImpl implements SkillRepository {
     private final static String SELECT_SKILL_QUERY = "SELECT * FROM skills WHERE id=?;";
-    private final static String INSERT_SKILL_QUERY = "INSERT INTO skills VALUES ?;";
+    private final static String INSERT_SKILL_QUERY = "INSERT INTO skills(skill) VALUES (?);";
     private final static String REMOVE_SKILL_QUERY = "DELETE FROM skills WHERE id=?;";
     private final static String UPDATE_SKILL_QUERY = "UPDATE skills SET skill=? WHERE id=?;";
+    private final static String REMOVE_DEVELOPERS_SKILLS_QUERY = "DELETE FROM developers_skills WHERE skills_id=?;";
 
     private Connection connection;
 
@@ -23,22 +24,37 @@ public class JdbcSkillRepositoryImpl implements SkillRepository {
     }
 
     @Override
-    public void add(Skill skill) {
+    public int add(Skill skill) {
+        int amount = 0;
+
         try (PreparedStatement ps = connection.prepareStatement(INSERT_SKILL_QUERY)) {
             ps.setString(1, skill.getName());
-            ps.execute();
+            amount = ps.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+
+        return amount;
     }
 
     @Override
     public int remove(Long id) {
         int removedAmount = 0;
 
-        try (PreparedStatement ps = connection.prepareStatement(REMOVE_SKILL_QUERY)) {
-            ps.setLong(1, id);
-            removedAmount = ps.executeUpdate();
+        try (PreparedStatement ps_skills = connection.prepareStatement(REMOVE_SKILL_QUERY);
+            PreparedStatement ps_dev_skills = connection.prepareStatement(REMOVE_DEVELOPERS_SKILLS_QUERY)) {
+
+            connection.setAutoCommit(false);
+
+            ps_dev_skills.setLong(1,id);
+            ps_dev_skills.executeUpdate();
+
+            ps_skills.setLong(1, id);
+            removedAmount = ps_skills.executeUpdate();
+
+            connection.commit();
+            connection.setAutoCommit(true);
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -72,10 +88,10 @@ public class JdbcSkillRepositoryImpl implements SkillRepository {
             rs = ps.executeQuery();
 
             String skillName = null;
-            if (rs != null)
+            if (rs.next())
                 skillName = rs.getString("skill");
 
-            skill = new Skill(id,skillName);
+            skill = new Skill(skillName);
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
