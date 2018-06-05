@@ -1,6 +1,5 @@
 package view;
 
-import service.SkillService;
 import util.ConnectionUtil;
 
 import java.sql.Connection;
@@ -59,6 +58,10 @@ public class UserMenu {
         System.out.println("4. Получить строку по id");
         System.out.println("5. Получить все строки из таблицы");
 
+    }
+
+    public static void main(String[] args) {
+        new UserMenu();
     }
 
 }

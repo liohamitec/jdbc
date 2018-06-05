@@ -1,9 +1,8 @@
 package service;
 
-import model.JdbcSkillRepositoryImpl;
+import repository.JdbcSkillRepositoryImpl;
 import model.Skill;
 import repository.SkillRepository;
-import util.ConnectionUtil;
 
 import java.sql.Connection;
 import java.util.Collection;

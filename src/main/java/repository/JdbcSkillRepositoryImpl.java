@@ -1,5 +1,6 @@
-package model;
+package repository;
 
+import model.Skill;
 import repository.SkillRepository;
 
 import java.sql.Connection;
