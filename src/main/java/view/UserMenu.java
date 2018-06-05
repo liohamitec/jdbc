@@ -10,12 +10,14 @@ public class UserMenu {
     Connection conn;
     Scanner sc;
     SkillView skillView;
+    DeveloperView devView;
 
     public UserMenu() {
         sc = new Scanner(System.in);
         ConnectionUtil connUtil = new ConnectionUtil();
         conn = connUtil.getConnection();
         skillView = new SkillView(conn,sc);
+        devView = new DeveloperView(conn,sc);
 
         execute();
 
@@ -38,8 +40,7 @@ public class UserMenu {
                 throw new InputMismatchException("Введеное число не входит в диапазон корректных значений!");
 
             switch (table) {
-                case 1: //new DeveloperView(action,conn,sc);
-                    break;
+                case 1: devView.executeAction(action); break;
                 case 2: skillView.executeAction(action); break;
             }
 
