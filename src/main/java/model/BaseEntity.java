@@ -1,7 +1,13 @@
 package model;
 
-public abstract class BaseEntity {
+public class BaseEntity {
     private Long id;
+
+    public BaseEntity(Long id) {
+        this.id = id;
+    }
+
+    public BaseEntity() {}
 
     public Long getId() {
         return id;

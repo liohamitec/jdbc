@@ -26,7 +26,6 @@ public class ConnectionUtil {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
     }
 
     public Connection getConnection() {
@@ -41,9 +40,9 @@ public class ConnectionUtil {
             ex.printStackTrace();
         } catch (SQLException ex) {
             ex.printStackTrace();
-        } finally {
-            return connection;
         }
+
+        return connection;
     }
 
     public void closeConnection() {

@@ -1,5 +1,6 @@
 package view;
 
+import service.SkillService;
 import util.ConnectionUtil;
 
 import java.sql.Connection;
@@ -10,7 +11,12 @@ public class UserMenu {
     Connection conn;
 
     public UserMenu() {
+        ConnectionUtil connUtil = new ConnectionUtil();
+        conn = connUtil.getConnection();
+
         execute();
+
+        connUtil.closeConnection();
     }
 
     private void execute() {
@@ -30,10 +36,12 @@ public class UserMenu {
             throw new InputMismatchException("Введеное число не входит в диапазон корректных значений!");
 
         switch (table) {
-            case 1: new SkillView(action); break;
-            case 2: //new DeveloperView(action);
-                break;
+            case 1: new SkillView(action,conn,sc); break;
+            case 2: //new DeveloperView(action,conn,sc);
+                    break;
         }
+
+        sc.close();
     }
 
 
