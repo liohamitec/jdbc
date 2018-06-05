@@ -4,6 +4,7 @@ import model.Skill;
 import service.SkillService;
 
 import java.sql.Connection;
+import java.util.Collection;
 import java.util.Scanner;
 
 public class SkillView {
@@ -58,6 +59,7 @@ public class SkillView {
     }
 
     private void selectAllAction() {
-        skillService.getAll();
+        Collection<Skill> skillCollection = skillService.getAll();
+        skillCollection.forEach(System.out::println);
     }
 }
