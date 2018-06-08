@@ -27,7 +27,6 @@ public class SessionFactoryCreator {
         StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
         builder.applySettings(cfg.getProperties());
         ServiceRegistry serviceRegistry = builder.build();
-        
         return cfg.buildSessionFactory(serviceRegistry);
     }
 }
