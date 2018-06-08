@@ -4,13 +4,10 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "skills")
 public class Skill extends NamedEntity {
     public Skill() {
     }
 
-    @ManyToMany(mappedBy = "skills")
     private Set<Developer> developers = new HashSet<>();
 
     public Set<Developer> getDevelopers() {
