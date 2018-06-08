@@ -21,17 +21,18 @@ public class HibernateDeveloperRepoImpl implements DeveloperRepository {
         sessionFactory = SessionFactoryCreator.createFactory();
     }
 
-    public int add(Developer dev) {
-        int id = 0;
+    public boolean add(Developer dev) {
+        boolean added = false;
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
             session.save(dev);
             transaction.commit();
+            added = true;
         } catch (HibernateException e) {
             e.printStackTrace();
         }
 
-        return id;
+        return added;
     }
 
     public int remove(Long id) {

@@ -16,7 +16,7 @@ public class DeveloperService {
                             new HibernateDeveloperRepoImpl();
     }
 
-    public int insert(Developer dev) {
+    public boolean insert(Developer dev) {
         return developerRepoImpl.add(dev);
     }
 

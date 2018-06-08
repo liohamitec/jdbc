@@ -32,8 +32,8 @@ public class SkillView {
         scanner.nextLine();
         String skillName = scanner.nextLine();
 
-        int amount = skillService.insert(new Skill(skillName));
-        if (amount > 0)
+        boolean added = skillService.insert(new Skill(skillName));
+        if (added)
             System.out.println("Скил добавлен!");
         else
             System.out.println("Возникла ошибка при добавлении скила...");

@@ -41,8 +41,8 @@ public class DeveloperView {
         System.out.println("зарплата: ");
         salary = scanner.nextInt();
 
-        int amount = devService.insert(new Developer(devName,age,salary));
-        if (amount > 0)
+        boolean added = devService.insert(new Developer(devName,age,salary));
+        if (added)
             System.out.println("Разработчик добавлен!");
         else
             System.out.println("Возникла ошибка при добавлении разработчика...");

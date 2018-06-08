@@ -23,17 +23,18 @@ public class HibernateSkillRepoImpl implements SkillRepository {
         sessionFactory = SessionFactoryCreator.createFactory();
     }
 
-    public int add(Skill skill) {
-        int id = 0;
+    public boolean add(Skill skill) {
+        boolean added = false;
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
             session.save(skill);
             transaction.commit();
+            added = true;
         } catch (HibernateException e) {
             e.printStackTrace();
         }
 
-        return id;
+        return added;
     }
 
     public int remove(Long id) {

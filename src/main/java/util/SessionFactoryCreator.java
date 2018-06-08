@@ -1,5 +1,7 @@
 package util;
 
+import model.Developer;
+import model.Skill;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -9,6 +11,8 @@ public class SessionFactoryCreator {
 
     public static SessionFactory createFactory() {
         Configuration cfg = new Configuration();
+        cfg.addAnnotatedClass(Developer.class);
+        cfg.addAnnotatedClass(Skill.class);
         cfg.configure("hibernate.cfg.xml");
 
 

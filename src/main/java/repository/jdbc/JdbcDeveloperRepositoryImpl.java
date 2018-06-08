@@ -31,19 +31,20 @@ public class JdbcDeveloperRepositoryImpl implements DeveloperRepository {
     }
 
     @Override
-    public int add(Developer developer) {
-        int amount = 0;
+    public boolean add(Developer developer) {
+        boolean added = false;
 
         try (PreparedStatement ps = connection.prepareStatement(INSERT_DEVELOPER_QUERY)) {
             ps.setString(1, developer.getName());
             ps.setInt(2, developer.getAge());
             ps.setInt(3, developer.getSalary());
-            amount = ps.executeUpdate();
+            ps.executeUpdate();
+            added = true;
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        return amount;
+        return added;
     }
 
     @Override

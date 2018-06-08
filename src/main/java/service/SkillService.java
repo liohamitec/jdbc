@@ -1,5 +1,6 @@
 package service;
 
+import repository.hibernate.HibernateSkillRepoImpl;
 import repository.jdbc.JdbcSkillRepositoryImpl;
 import model.Skill;
 import repository.SkillRepository;
@@ -11,10 +12,11 @@ public class SkillService {
     SkillRepository skillRepImpl;
 
     public SkillService(Connection conn) {
-        skillRepImpl = new JdbcSkillRepositoryImpl(conn);
+        skillRepImpl = //new JdbcSkillRepositoryImpl(conn);
+                        new HibernateSkillRepoImpl();
     }
 
-    public int insert(Skill skill) {
+    public boolean insert(Skill skill) {
         return skillRepImpl.add(skill);
     }
 

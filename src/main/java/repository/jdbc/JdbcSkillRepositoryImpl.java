@@ -24,17 +24,18 @@ public class JdbcSkillRepositoryImpl implements SkillRepository {
     }
 
     @Override
-    public int add(Skill skill) {
-        int amount = 0;
+    public boolean add(Skill skill) {
+        boolean added = false;
 
         try (PreparedStatement ps = connection.prepareStatement(INSERT_SKILL_QUERY)) {
             ps.setString(1, skill.getName());
-            amount = ps.executeUpdate();
+            ps.executeUpdate();
+            added = true;
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
-        return amount;
+        return added;
     }
 
     @Override

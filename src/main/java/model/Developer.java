@@ -11,10 +11,10 @@ public class Developer
         extends NamedEntity {
 
     @Column(name = "age")
-    private int age;
+    private Integer age;
 
     @Column(name = "salary")
-    private int salary;
+    private Integer salary;
 
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
@@ -40,18 +40,18 @@ public class Developer
         super(name);
     }
 
-    public Developer(Long id, String name, int age) {
+    public Developer(Long id, String name, Integer age) {
         super(id, name);
         this.age = age;
     }
 
-    public Developer(Long id, String name, int age, int salary) {
+    public Developer(Long id, String name, Integer age, int salary) {
         super(id, name);
         this.age = age;
         this.salary = salary;
     }
 
-    public Developer(String name, int age, int salary) {
+    public Developer(String name, Integer age, Integer salary) {
         super(name);
         this.age = age;
         this.salary = salary;
@@ -60,19 +60,19 @@ public class Developer
     public Developer() {
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
-    public int getSalary() {
+    public Integer getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(Integer salary) {
         this.salary = salary;
     }
 
