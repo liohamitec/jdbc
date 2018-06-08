@@ -68,7 +68,7 @@ public class HibernateSkillRepoImpl implements SkillRepository {
             CriteriaUpdate<Skill> update = cb.createCriteriaUpdate(Skill.class);
             Root<Skill> skillRoot = update.from(Skill.class);
 
-            update.set("skill", skill.getName());
+            update.set("name", skill.getName());
             update.where(cb.equal(skillRoot.get("id"), skill.getId()));
 
             updatedAmount = session.createQuery(update).executeUpdate();
@@ -102,7 +102,7 @@ public class HibernateSkillRepoImpl implements SkillRepository {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
 
-            skillCollection = session.createQuery("FROM model.Skill").list();
+            skillCollection = session.createQuery("FROM Skill").list();
 
             transaction.commit();
         } catch (HibernateException e) {

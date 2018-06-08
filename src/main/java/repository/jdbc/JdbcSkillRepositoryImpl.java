@@ -12,9 +12,9 @@ import java.util.Collection;
 
 public class JdbcSkillRepositoryImpl implements SkillRepository {
     private final static String SELECT_SKILL_QUERY = "SELECT * FROM skills WHERE id=?;";
-    private final static String INSERT_SKILL_QUERY = "INSERT INTO skills(skill) VALUES (?);";
+    private final static String INSERT_SKILL_QUERY = "INSERT INTO skills(name) VALUES (?);";
     private final static String REMOVE_SKILL_QUERY = "DELETE FROM skills WHERE id=?;";
-    private final static String UPDATE_SKILL_QUERY = "UPDATE skills SET skill=? WHERE id=?;";
+    private final static String UPDATE_SKILL_QUERY = "UPDATE skills SET name=? WHERE id=?;";
     private final static String REMOVE_DEVELOPERS_SKILLS_QUERY = "DELETE FROM developers_skills WHERE skills_id=?;";
 
     private Connection connection;
@@ -89,7 +89,7 @@ public class JdbcSkillRepositoryImpl implements SkillRepository {
 
             String skillName = null;
             if (rs.next())
-                skillName = rs.getString("skill");
+                skillName = rs.getString("name");
 
             skill = new Skill(skillName);
         } catch (SQLException ex) {
@@ -118,7 +118,7 @@ public class JdbcSkillRepositoryImpl implements SkillRepository {
             String skill;
             while (rs.next()) {
                 id = rs.getLong("id");
-                skill = rs.getString("skill");
+                skill = rs.getString("name");
                 collection.add(new Skill(id,skill));
             }
         } catch (SQLException ex) {

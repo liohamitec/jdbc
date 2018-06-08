@@ -6,7 +6,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "skills")
-@AttributeOverride(name = "name", column = @Column(name = "skill"))
 public class Skill extends NamedEntity {
     public Skill() {
     }

@@ -6,7 +6,7 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class NamedEntity extends BaseEntity {
 
-    @Column
+    @Column(name = "name")
     private String name;
 
     public NamedEntity(Long id, String name) {
