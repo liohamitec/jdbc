@@ -1,6 +1,8 @@
 package model;
 
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,9 +10,9 @@ import java.util.Set;
 public class Developer
         extends NamedEntity {
 
-    private int age;
+    private Integer age;
 
-    private int salary;
+    private Integer salary;
 
     private Set<Skill> skills = new HashSet<>();
 
@@ -30,18 +32,18 @@ public class Developer
         super(name);
     }
 
-    public Developer(Long id, String name, int age) {
+    public Developer(Long id, String name, Integer age) {
         super(id, name);
         this.age = age;
     }
 
-    public Developer(Long id, String name, int age, int salary) {
+    public Developer(Long id, String name, Integer age, Integer salary) {
         super(id, name);
         this.age = age;
         this.salary = salary;
     }
 
-    public Developer(String name, int age, int salary) {
+    public Developer(String name, Integer age, Integer salary) {
         super(name);
         this.age = age;
         this.salary = salary;
@@ -50,19 +52,19 @@ public class Developer
     public Developer() {
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
-    public int getSalary() {
+    public Integer getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(Integer salary) {
         this.salary = salary;
     }
 

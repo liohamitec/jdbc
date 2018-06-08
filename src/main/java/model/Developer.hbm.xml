@@ -5,15 +5,15 @@
 
 <hibernate-mapping>
     <class name = "model.Developer" table = "developers">
-        <id name = "id" type = "int" column = "id">
+        <id name = "id" type = "long" column = "id">
             <generator class="identity"/>
         </id>
 
         <property name = "name" column = "name" type = "string"/>
-        <property name = "age" column = "age" type = "int"/>
-        <property name = "salary" column = "salary" type = "int"/>
+        <property name = "age" column = "age" type = "java.lang.Integer"/>
+        <property name = "salary" column = "salary" type = "java.lang.Integer"/>
 
-        <set name="developers_skills" inverse="false">
+        <set name="skills" table="developers_skills" inverse="false">
             <key>
                 <column name="developers_id" not-null="true"/>
             </key>

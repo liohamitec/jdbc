@@ -102,7 +102,7 @@ public class HibernateDeveloperRepoImpl implements DeveloperRepository {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
 
-            devCollection = session.createQuery("from Developer").list();
+            devCollection = session.createQuery("from model.Developer").list();
 
             transaction.commit();
         } catch (HibernateException e) {

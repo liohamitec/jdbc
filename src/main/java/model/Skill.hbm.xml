@@ -5,13 +5,13 @@
 
 <hibernate-mapping>
     <class name = "model.Skill" table = "skills">
-        <id name = "id" type = "int" column = "id">
+        <id name = "id" type = "java.lang.Long" column = "id">
             <generator class="identity"/>
         </id>
 
         <property name = "name" column = "name" type = "string"/>
 
-        <set name="developers_skills" inverse="true">
+        <set name="developers" table="developers_skills" inverse="true">
             <key>
                 <column name="skills_id" not-null="true"/>
             </key>

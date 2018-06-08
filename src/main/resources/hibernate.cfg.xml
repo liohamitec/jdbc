@@ -15,8 +15,10 @@
         <mapping class="model.Skill"/>
         -->
 
+        <!--
         <mapping resource = "model/Developer.hbm.xml"/>
         <mapping resource = "model/Skill.hbm.xml"/>
+        -->
 
     </session-factory>
 </hibernate-configuration>

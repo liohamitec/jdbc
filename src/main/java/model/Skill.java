@@ -1,5 +1,7 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;

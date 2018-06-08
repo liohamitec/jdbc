@@ -1,6 +1,9 @@
 package model;
 
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 public class NamedEntity extends BaseEntity {
 
     private String name;

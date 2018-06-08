@@ -102,7 +102,7 @@ public class HibernateSkillRepoImpl implements SkillRepository {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
 
-            skillCollection = session.createQuery("FROM Skill").list();
+            skillCollection = session.createQuery("FROM model.Skill").list();
 
             transaction.commit();
         } catch (HibernateException e) {
