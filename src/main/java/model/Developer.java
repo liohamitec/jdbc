@@ -1,9 +1,36 @@
 package model;
 
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "developers")
 public class Developer
         extends NamedEntity {
+
+    @Column(name = "age")
     private int age;
+
+    @Column(name = "salary")
     private int salary;
+
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "developers_skills",
+            joinColumns = { @JoinColumn(name = "developers_id") },
+            inverseJoinColumns = { @JoinColumn(name = "skills_id") }
+    )
+    private Set<Skill> skills = new HashSet<>();
+
+    public Set<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(Set<Skill> skills) {
+        this.skills = skills;
+    }
 
     public Developer(Long id, String name) {
         super(id, name);
@@ -28,6 +55,9 @@ public class Developer
         super(name);
         this.age = age;
         this.salary = salary;
+    }
+
+    public Developer() {
     }
 
     public int getAge() {

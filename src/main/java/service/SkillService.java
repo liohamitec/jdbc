@@ -1,6 +1,6 @@
 package service;
 
-import repository.JdbcSkillRepositoryImpl;
+import repository.jdbc.JdbcSkillRepositoryImpl;
 import model.Skill;
 import repository.SkillRepository;
 

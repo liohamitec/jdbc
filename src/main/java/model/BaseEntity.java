@@ -1,6 +1,14 @@
 package model;
 
+import javax.persistence.*;
+import java.io.Serializable;
+
+@MappedSuperclass
 public class BaseEntity {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     public BaseEntity(Long id) {

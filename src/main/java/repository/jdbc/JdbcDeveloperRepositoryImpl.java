@@ -1,6 +1,7 @@
-package repository;
+package repository.jdbc;
 
 import model.Developer;
+import repository.DeveloperRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class JdbcDeveloperRepositoryImpl implements DeveloperRepository {
     private final static String SELECT_DEVELOPER_QUERY = "SELECT * FROM developers WHERE id=?;";

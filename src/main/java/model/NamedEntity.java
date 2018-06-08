@@ -1,6 +1,12 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class NamedEntity extends BaseEntity {
+
+    @Column
     private String name;
 
     public NamedEntity(Long id, String name) {

@@ -2,7 +2,8 @@ package service;
 
 import model.Developer;
 import repository.DeveloperRepository;
-import repository.JdbcDeveloperRepositoryImpl;
+import repository.hibernate.HibernateDeveloperRepoImpl;
+import repository.jdbc.JdbcDeveloperRepositoryImpl;
 
 import java.sql.Connection;
 import java.util.Collection;
@@ -11,7 +12,8 @@ public class DeveloperService {
     DeveloperRepository developerRepoImpl;
 
     public DeveloperService(Connection conn) {
-        developerRepoImpl = new JdbcDeveloperRepositoryImpl(conn);
+        developerRepoImpl = //new JdbcDeveloperRepositoryImpl(conn);
+                            new HibernateDeveloperRepoImpl();
     }
 
     public int insert(Developer dev) {

@@ -1,4 +1,4 @@
-package repository;
+package repository.jdbc;
 
 import model.Skill;
 import repository.SkillRepository;
