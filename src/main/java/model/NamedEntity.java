@@ -34,8 +34,8 @@ public class NamedEntity extends BaseEntity {
     @Override
     public String toString() {
         return  "{" +
-                "id='" + getId() + '\'' +
-                "name='" + name + '\'' +
+                "id='" + getId() + "\'," +
+                "name='" + name + "\'" +
                 '}';
     }
 }

@@ -79,10 +79,10 @@ public class Developer
     @Override
     public String toString() {
         return  "{" +
-                "id='" + getId() + "\' " +
-                "name='" + getName() + "\' " +
-                "age='" + getAge() + "\' " +
-                "salary='" + getSalary() + "\' " +
+                "id='" + getId() + "\', " +
+                "name='" + getName() + "\', " +
+                "age='" + getAge() + "\', " +
+                "salary='" + getSalary() + "\', " +
                 '}';
     }
 }
