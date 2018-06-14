@@ -1,6 +1,9 @@
 /home/liohamitec/Desktop/jdbctask/src/main/java/view/DeveloperView.java
+/home/liohamitec/Desktop/jdbctask/src/main/java/servlets/DeveloperUpdateServlet.java
 /home/liohamitec/Desktop/jdbctask/src/main/java/repository/hibernate/HibernateSkillRepoImpl.java
+/home/liohamitec/Desktop/jdbctask/src/main/java/servlets/SkillUpdateServlet.java
 /home/liohamitec/Desktop/jdbctask/src/main/java/util/SessionFactoryCreator.java
+/home/liohamitec/Desktop/jdbctask/src/main/java/servlets/DeveloperDeleteServlet.java
 /home/liohamitec/Desktop/jdbctask/src/main/java/model/Skill.java
 /home/liohamitec/Desktop/jdbctask/src/main/java/util/ConnectionUtil.java
 /home/liohamitec/Desktop/jdbctask/src/main/java/model/Developer.java
@@ -15,6 +18,7 @@
 /home/liohamitec/Desktop/jdbctask/src/main/java/servlets/SkillsServlet.java
 /home/liohamitec/Desktop/jdbctask/src/main/java/repository/jdbc/JdbcSkillRepositoryImpl.java
 /home/liohamitec/Desktop/jdbctask/src/main/java/repository/hibernate/HibernateDeveloperRepoImpl.java
+/home/liohamitec/Desktop/jdbctask/src/main/java/servlets/SkillDeleteServlet.java
 /home/liohamitec/Desktop/jdbctask/src/main/java/model/BaseEntity.java
 /home/liohamitec/Desktop/jdbctask/src/main/java/repository/GenericRepository.java
 /home/liohamitec/Desktop/jdbctask/src/main/java/service/DeveloperService.java
