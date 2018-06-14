@@ -25,7 +25,8 @@ public class SkillDeleteServlet extends HttpServlet {
         Long id = Long.parseLong(request.getParameter("id"));
 
         skillService.delete(id);
-        request.getRequestDispatcher("skills.jsp").forward(request, response);
+        response.sendRedirect("skills");
+        //request.getRequestDispatcher("skills").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

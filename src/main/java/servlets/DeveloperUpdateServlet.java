@@ -1,8 +1,9 @@
 package servlets;
 
+import model.Developer;
 import model.Skill;
+import service.DeveloperService;
 import service.SkillService;
-import util.ConnectionUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,25 +11,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
 
-@WebServlet("/updateSkill")
-public class SkillUpdateServlet extends HttpServlet {
-    SkillService skillService;
+@WebServlet("/updateDeveloper")
+public class DeveloperUpdateServlet extends HttpServlet {
+    DeveloperService devService;
 
     @Override
     public void init() throws ServletException {
         super.init();
-        skillService = (SkillService) getServletContext().getAttribute("skillService");
+        devService = (DeveloperService) getServletContext().getAttribute("devService");
     }
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long id = Long.parseLong(request.getParameter("id"));
         String name = request.getParameter("name");
+        Integer age = Integer.parseInt(request.getParameter("age"));
+        Integer sal = Integer.parseInt(request.getParameter("salary"));
 
-        skillService.update(new Skill(id,name));
-        response.sendRedirect("skills");
+        devService.update(new Developer(id,name,age,sal));
+        response.sendRedirect("developers");
         //request.getRequestDispatcher("skills").forward(request, response);
     }
 

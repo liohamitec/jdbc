@@ -25,6 +25,7 @@ public class DevelopersServlet extends HttpServlet {
         Connection conn = connUtil.getConnection();
 
         devService = new DeveloperService(conn);
+        getServletContext().setAttribute("devService", devService);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,12 +39,5 @@ public class DevelopersServlet extends HttpServlet {
 
         request.setAttribute("devCollection", devCollection);
         request.getRequestDispatcher("developers.jsp").forward(request, response);
-
-        /*
-        PrintWriter out = response.getWriter();
-        for (Developer developer : devCollection) {
-            out.println(developer.toString());
-        }
-        */
     }
 }
