@@ -82,7 +82,7 @@ public class Developer
                 "id='" + getId() + "\', " +
                 "name='" + getName() + "\', " +
                 "age='" + getAge() + "\', " +
-                "salary='" + getSalary() + "\', " +
+                "salary='" + getSalary() + "\' " +
                 '}';
     }
 }
