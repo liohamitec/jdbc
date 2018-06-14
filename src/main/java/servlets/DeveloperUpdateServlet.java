@@ -1,9 +1,7 @@
 package servlets;
 
 import model.Developer;
-import model.Skill;
 import service.DeveloperService;
-import service.SkillService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
